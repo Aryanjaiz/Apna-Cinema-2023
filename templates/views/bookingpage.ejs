@@ -595,8 +595,8 @@
         var cost = 0;
         function select(element) {
                 var seatsrc = element.src;
-                seatsrc = seatsrc.slice(21)
-                // 32
+                seatsrc = seatsrc.slice(32)
+                // 21
                 if (seatsrc === "/static/pic/seat/seat.png") {
                         selseat = selseat + 1;
                         element.src = "/static/pic/seat/selected.png";
