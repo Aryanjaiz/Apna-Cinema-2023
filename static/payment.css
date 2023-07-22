@@ -1,0 +1,123 @@
+* {
+    margin: none;
+    border: none;
+    background-color: black;
+}
+
+.paymentDetails {
+    width:30%;
+    height:90vh;
+    float: left;
+    font-size: 1.3rem;
+}
+.paymentForm {
+    width:60%;
+    margin-left: 40%;
+    padding-left:3%;
+    padding-right:3%;
+    font-size: 1.2rem;
+    height: 90vh;
+    background-color: rgb(50, 50, 50);
+
+}
+
+.card{
+    height:100%;
+    border:0px !important;
+    box-shadow: 0px 0px 40px 0px rgb(81, 81, 81);
+}
+.card img{
+    height:40%;
+    padding: 4%;
+}
+
+.cardDetails{
+    background-color: rgb(50, 50, 50);
+    width: 100%;
+}
+
+.poster img {
+    width: 100%;
+}
+
+main {
+    padding:2%;
+    display: inline;
+    color: rgb(243, 160, 5);
+}
+.movietitle input{
+    text-align: center;
+    width: 100%;
+}
+
+
+
+p,input,textarea{
+    background-color: rgb(50, 50, 50);
+}
+
+
+
+
+h1 {
+    background-color: rgb(50, 50, 50);
+    text-align: center;
+    margin:3%;
+    padding: 2%;
+}
+
+.paymentBtn button {
+
+    width:100%;
+    padding:1%;
+    font-weight: 800;
+    color: black;
+    background-color: rgb(243, 160, 5);
+    font-size: 1.5rem;
+    text-align: center !important;
+    
+}
+.paymentBtn{
+  margin-top: 1%;
+
+}
+.paymentBtn button:hover{
+    cursor: pointer;
+    background-color: green;
+}
+.infodetail{
+    font-weight: 600;
+    background-color: black;
+    width:60%;
+}
+.infotag{
+    background-color: black;
+    display: inline;
+}
+
+
+
+.terms{
+    display: inline;
+    background-color: rgb(50, 50, 50);
+}
+input{
+    width: 100%;
+    color: white;
+    outline: 0;
+    border-width: 0 0 2px;
+}
+#declaration{
+    width:2%;
+    margin-right:1%;
+}
+select{
+    color:grey;
+    background-color: rgb(50, 50, 50);
+}
+input[type="date"]{
+    color: grey;
+}
+input:focus{
+    outline: 1px solid rgb(243, 160, 5);
+}

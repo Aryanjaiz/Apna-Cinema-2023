@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png">
+    <title>Payment</title>
+    <link rel="shortcut icon" href="/static/pic/logo/AC favi logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/static/payment.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+
+    <main>
+        <form action="/<%=moviedata.url%>/payment" method="post">
+            <div class="paymentDetails">
+                <div class="card">
+                    <img class="card-img-top" src="<%=moviedata.image%>" alt="Card image cap">
+                    <div class="card-body">
+                        <div class="movietitle">
+
+                            <input type="text" class="infodetail" value="<%=moviedata.moviename%>" name="moviename"
+                            readonly>
+                        </div>
+                        <p class="infotag">Date: </p>
+                        <input id="date" class="infodetail" type="text" name="date" value="" readonly>
+                    </br>
+                    <div>
+
+                        <p class="infotag">Venue : </p>
+                        <input id="venue" class="infodetail" type="text" name="venue" value="" readonly>
+                    </div>
+                    <div>
+
+                        
+                        
+                        <p class="infotag">Time : </p>
+                        <input id="time" class="infodetail" type="text" name="time" value="" readonly>
+                    </div>
+
+                            <div>
+
+                                <p class="infotag">Seat Info : </p>
+                                <input id="selSeats" class="infodetail" type="text" name="selSeat" value="" readonly>
+                            </div>
+
+                            <div>
+                                <label class="infotag"> Fee :</label>
+                                <input id="ticketFee" class="infodetail" type="number" name="amount" value="" readonly>
+
+                            </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+            <div class="paymentForm">
+                <h1>Payment </h1>
+                <p>Full Name : <input name="name" type="text" value="" required placeholder="Aryan Jaiz"> </p>
+
+                <p>
+                    Contact Number : <input name="phone" type="number" maxlength="10"  minlength="10" required value="contactnumber" placeholder="1234567890"
+                        required>
+                </p>
+                <p>
+                    Email Id : <input type="email" name="email" placeholder="abc@gmail.com" required>
+                </p>
+                <div class="cardDetails">
+                    <p>Card type : <select name="Card type" id="Card type" required>
+                            <option value="">--Select a card type--</option>
+                            <option value="">Debit</option>
+                            <option value="">Credit</option>
+                            <option value="">Master</option>
+                            <option value="">Rupay</option>
+                        </select> </p>
+                    <p>Card Number : <input type="number" name=""  maxlength="12" minlength="12"placeholder="XXXX XXXX XXXX" id="card number" required></p>
+                    <p>Expirey Date <input type="date" name="" id="Expirey" required></p>
+                    <p>CVV : <input type="password" name="" id="cvv" maxlength="3" minlength="3"placeholder="***" required></p>
+
+                    <div class="terms">
+                        <input type="checkbox" name="" id="declaration" required>Yes I accept the term and condition of
+                        signing up to the service and have read the privacy policy
+                        regarding the storing of my information.
+                    </div>
+                    <div class="paymentBtn">
+                        <button type="submit" onclick="payment()" id="Pay Now" value="Pay Now">Pay now</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </form>
+    </main>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+<script>
+    var sessionString = sessionStorage.getItem('selectedSeat')
+    var costString = sessionStorage.getItem('amount')
+    var placeString = sessionStorage.getItem('place')
+    var timeString = sessionStorage.getItem('time')
+    var dateString = sessionStorage.getItem('date')
+
+
+
+    var obj = JSON.parse(sessionString);
+    var cost = JSON.parse(costString);
+    var place = JSON.parse(placeString);
+    var time = JSON.parse(timeString);
+    var date = JSON.parse(dateString);
+
+
+
+    var fee = document.getElementById('ticketFee');
+    var seats = document.getElementById('selSeats');
+    var venue = document.getElementById('venue');
+    var timing = document.getElementById('time');
+    var dates = document.getElementById('date');
+
+    var selseat = Object.values(obj).toLocaleString();
+    selseat = selseat.replaceAll(',', ' ');
+    seats.value = selseat;
+    fee.value = cost;
+    venue.value = place;
+    timing.value = time;
+    dates.value = date;
+
+
+</script>
+
+</html>
